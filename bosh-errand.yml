@@ -1,0 +1,23 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: 18fgsa/concourse-task
+
+inputs:
+  - name: pipeline-tasks
+  - name: common
+outputs:
+  - name: bosh-errand
+
+run:
+  path: pipeline-tasks/bosh-errand.sh
+
+params:
+  BOSH_TARGET:
+  BOSH_USERNAME:
+  BOSH_PASSWORD:
+  BOSH_DEPLOYMENT_NAME:
+  BOSH_ERRAND:
+  BOSH_CACERT:

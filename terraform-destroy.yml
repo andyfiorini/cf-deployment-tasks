@@ -1,0 +1,23 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: 18fgsa/concourse-task
+
+inputs:
+  - name: pipeline-tasks
+  - name: terraform-templates
+outputs:
+  - name: terraform-state
+
+run:
+  path: pipeline-tasks/terraform-destroy.sh
+
+params:
+  STACK_NAME:
+  TEMPLATE_SUBDIR:
+  S3_TFSTATE_BUCKET:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:
+  AWS_DEFAULT_REGION:

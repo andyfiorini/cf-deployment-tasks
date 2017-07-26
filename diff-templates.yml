@@ -1,0 +1,16 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: 18fgsa/concourse-task
+
+inputs:
+  - name: pipeline-tasks
+outputs:
+  - name: diff-templates
+run:
+  path: pipeline-tasks/diff-templates.sh
+
+params:
+  TEMPLATES_DIR:
